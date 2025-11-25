@@ -28,7 +28,7 @@ document.getElementById('convertBtn').addEventListener('click', function () {
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
         const baseName = file.name.replace(/\.[^/.]+$/, ""); // tanpa ekstensi
-        link.download = `${baseName}_converted.${format}`;
+        link.download = `${baseName}.${format}`;
         link.className = 'download-link';
         link.textContent = `Download: ${link.download}`;
         downloadContainer.appendChild(link);
@@ -39,3 +39,4 @@ document.getElementById('convertBtn').addEventListener('click', function () {
     reader.readAsDataURL(file);
   });
 });
+
