@@ -1,35 +1,43 @@
-function convertImage() {
+function convertImages() {
   const fileInput = document.getElementById('imageInput');
   const format = document.getElementById('format').value;
-  const downloadLink = document.getElementById('downloadLink');
+  const downloadContainer = document.getElementById('downloadContainer');
 
-  if (!fileInput.files || !fileInput.files[0]) {
-    alert("Please select an image first.");
+  downloadContainer.innerHTML = ''; // Bersihkan sebelumnya
+
+  if (!fileInput.files.length) {
+    alert("Please select one or more images.");
     return;
   }
 
-  const file = fileInput.files[0];
-  const img = new Image();
-  const reader = new FileReader();
+  Array.from(fileInput.files).forEach((file, index) => {
+    const reader = new FileReader();
+    const img = new Image();
 
-  reader.onload = function(e) {
-    img.src = e.target.result;
-  };
+    reader.onload = function(e) {
+      img.src = e.target.result;
+    };
 
-  img.onload = function() {
-    const canvas = document.createElement('canvas');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    canvas.getContext('2d').drawImage(img, 0, 0);
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
 
-    canvas.toBlob(function(blob) {
-      const url = URL.createObjectURL(blob);
-      downloadLink.href = url;
-      downloadLink.download = 'converted.' + format;
-      downloadLink.style.display = 'inline-block';
-      downloadLink.textContent = "Download Result";
-    }, 'image/' + format, 0.92);
-  };
+      canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        const baseName = file.name.split('.').slice(0, -1).join('.') || 'image';
+        link.download = `${baseName}_converted.${format}`;
+        link.textContent = `Download ${link.download}`;
+        link.className = 'download-link';
+        downloadContainer.appendChild(link);
+        downloadContainer.appendChild(document.createElement('br'));
+      }, 'image/' + format, 0.92);
+    };
 
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
+  });
 }
