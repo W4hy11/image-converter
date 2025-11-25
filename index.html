@@ -2,22 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Image Converter (Multi-file)</title>
+  <title>Multi Image Converter</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h2>Image Converter</h2>
-    <p>Supports: JPG, PNG, WEBP | Multi-file upload</p>
+    <p>Convert multiple JPG, PNG, or WEBP images</p>
 
     <input type="file" id="imageInput" accept="image/*" multiple><br>
+    
     <label for="format">Convert to:</label>
     <select id="format">
       <option value="jpeg">JPG</option>
       <option value="png">PNG</option>
       <option value="webp">WEBP</option>
     </select><br>
-    <button onclick="convertImages()">Convert All</button><br>
+
+    <button id="convertBtn">Convert All</button>
 
     <div id="downloadContainer"></div>
   </div>
