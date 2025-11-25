@@ -32,3 +32,16 @@ input, select, button {
   border-radius: 5px;
   font-size: 14px;
 }
+
+#downloadAllBtn {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
