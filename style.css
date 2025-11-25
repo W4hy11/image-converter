@@ -1,12 +1,12 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
   background: #f3f3f3;
   padding: 40px;
   text-align: center;
 }
 
 .container {
-  background: #fff;
+  background: white;
   padding: 30px;
   margin: auto;
   max-width: 500px;
@@ -22,20 +22,10 @@ input, select, button {
   max-width: 100%;
 }
 
-#downloadLink {
-  margin-top: 15px;
-  padding: 12px;
-  background-color: #28a745;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  display: inline-block;
-}
-
 .download-link {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 14px;
+  margin: 10px 0;
+  padding: 10px 15px;
   background-color: #4CAF50;
   color: white;
   text-decoration: none;
